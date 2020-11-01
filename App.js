@@ -5,15 +5,18 @@ function initAutocomplete() {
       zoom: 13,
       mapTypeId: "roadmap",
     });
+
     // Create the search box and link it to the UI element.
     const input = document.getElementById("pac-input");
     const searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
     // Bias the SearchBox results towards current map's viewport.
     map.addListener("bounds_changed", () => {
       searchBox.setBounds(map.getBounds());
     });
     let markers = [];
+
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener("places_changed", () => {
@@ -22,11 +25,13 @@ function initAutocomplete() {
       if (places.length == 0) {
         return;
       }
+
       // Clear out the old markers.
       markers.forEach((marker) => {
         marker.setMap(null);
       });
       markers = [];
+
       // For each place, get the icon, name and location.
       const bounds = new google.maps.LatLngBounds();
       places.forEach((place) => {
@@ -41,6 +46,7 @@ function initAutocomplete() {
           anchor: new google.maps.Point(17, 34),
           scaledSize: new google.maps.Size(25, 25),
         };
+
         // Create a marker for each place.
         markers.push(
           new google.maps.Marker({
@@ -60,12 +66,16 @@ function initAutocomplete() {
       });
       map.fitBounds(bounds);
     });
+
     const directionsService = new google.maps.DirectionsService();
-const directionsRenderer = new google.maps.DirectionsRenderer({
-    draggable: true,
-    map,
-    panel: document.getElementById("right-panel"),
+    const directionsRenderer = new google.maps.DirectionsRenderer({
+      draggable: true,
+      map,
+      panel: document.getElementById("right-panel"),
 });
+
+
+// Add Directions
 directionsRenderer.addListener("directions_changed", () => {
     computeTotalDistance(directionsRenderer.getDirections());
 });
@@ -116,7 +126,7 @@ const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
     center: {lat: 47.120882, lng: -101.300775},
 });
-
+}
 // const directionsService = new google.maps.DirectionsService();
 // const directionsRenderer = new google.maps.DirectionsRenderer({
 //     draggable: true,
@@ -168,17 +178,6 @@ const map = new google.maps.Map(document.getElementById("map"), {
 // }
 
 
-// Calculate fuel cost
 
-function calculate()
-{
-    num1 = document.getElementById("MPG").value;
-    num2 = document.getElementById("DriveDist").value;
-    num3 = document.getElementById("FuelCost").value
-    num4 = ((num1/100) * num2) * num3
 
-    document.getElementById("result").innerHTML = "It will cost $" + num4.toFixed(2) + " to drive " + num2 + "km";
-    document.getElementById("Dist").innerHTML = num2;
-    document.getElementById("result").innerHTML;
-}
-}
+
