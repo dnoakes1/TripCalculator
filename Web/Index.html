@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+        <meta charset="UTF-8">        
+        <link rel="stylesheet" href="C:\Users\DanNo\Documents\PersonalWebPage\Web\Assets\style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- Navbar (sit on top) -->
+        <header>
+            <h1 class="logo">Trip Planner and Fuel Cost Calculator</h1>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <nav>
+              <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#Map">Map</a></li>
+                <li><a href="#Calculator">Calculator</a></li>
+              </ul>
+            </nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+              <span></span>
+            </label>
+        </header>
+           
+        <!-- <div class="parallax">
+              &nbsp;
+            </div> -->
+
+            <div class="container"  id="Home">
+                <div class="parallax">
+                </div>
+            </div>
+          
+            <div class ="container2" id="Map">
+                <h1>About</h1>
+                <!-- Put an Api Map here with leaflet or Google Api -->
+
+            </div>
+
+            <div class="container">
+               <div class="parallax2">
+               </div>
+            </div>
+
+            <div class ="container2" id="Calculator">
+                <h1> Plan Your Trip: </h1>
+                <!-- Put an Api Map here with leaflet or Google Api -->
+                
+                <!-- JS App To Calculate  -->
+                <form>
+                    Vehicle's Liters per 100km: <input type="text" id ="MPG"/><br>
+                    Driving Distance (Km): <input type="text" id ="DriveDist"/> <br>
+                    Cost of Fuel: <input type="text" id ="FuelCost"/> <br>
+                    <input type="button" onClick="calculate()" Value="Calculate" />
+                </form>
+                <p> <span id = "result"></span>
+                </p>
+                <!-- <button onclick="calculate()">Calculate</button>
+                <p id="result"></p> -->
+                
+                <script>
+                function calculate()
+                {
+                        num1 = document.getElementById("MPG").value;
+                        num2 = document.getElementById("DriveDist").value;
+                        num3 = document.getElementById("FuelCost").value
+                        document.getElementById("result").innerHTML = "It will cost $" + ((num1/100) * num2) * num3 + " to drive " + num2 + "km";
+                        document.getElementById("Dist").innerHTML = num2;
+                        document.getElementById("result").innerHTML
+                
+                }
+                </script> 
+            </div>
+          
+        <!-- Footer Section -->
+        <footer id="Contact">
+            <div class="row" style="clear: both; text-align: center;">
+            </div>
+        </footer>
+
+    </body>
+</html>
